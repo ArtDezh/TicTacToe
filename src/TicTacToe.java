@@ -4,37 +4,39 @@ public class TicTacToe {
     public static void main(String[] args) {
         System.out.println("Для выбора ячейки используйте числа от 1 до 9 в соответствии с таблицей ниже!");
         printTable();
+        char[][] gameTable = {
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '}
+        };
+
         if (new Random().nextBoolean()) {
-            makeComputerMove();
-            printGameTable();
+            makeComputerMove(gameTable);
+            printGameTable(gameTable);
         }
         while (true) {
-            makeUserMove();
-            printGameTable();
-            if (isUserWin()) {
+            makeUserMove(gameTable);
+            printGameTable(gameTable);
+            if (isUserWin(gameTable)) {
                 System.out.println("YOU WIN!!!");
                 break;
             }
-            if (isDraw()) {
+            if (isDraw(gameTable)) {
                 System.out.println("Sorry, DRAW!!!");
                 break;
             }
-            makeComputerMove();
-            printGameTable();
-            if (isComputerWin()) {
+            makeComputerMove(gameTable);
+            printGameTable(gameTable);
+            if (isComputerWin(gameTable)) {
                 System.out.println("COMPUTER WIN!!!");
                 break;
             }
-            if (isDraw()) {
+            if (isDraw(gameTable)) {
                 System.out.println("Sorry, DRAW!!!");
                 break;
             }
         }
         System.out.println("GAME OVER!!!");
-    }
-
-    private static void printGameTable() {
-
     }
 
     private static void printTable() {
@@ -47,23 +49,27 @@ public class TicTacToe {
         System.out.println("-------------");
     }
 
-    private static void makeUserMove() {
+    private static void printGameTable(char[][] gameTable) {
 
     }
 
-    private static void makeComputerMove() {
+    private static void makeUserMove(char[][] gameTable) {
 
     }
 
-    private static boolean isUserWin() {
+    private static void makeComputerMove(char[][] gameTable) {
+
+    }
+
+    private static boolean isUserWin(char[][] gameTable) {
         return false;
     }
 
-    private static boolean isComputerWin() {
+    private static boolean isComputerWin(char[][] gameTable) {
         return false;
     }
 
-    private static boolean isDraw() {
+    private static boolean isDraw(char[][] gameTable) {
         return false;
     }
 }
