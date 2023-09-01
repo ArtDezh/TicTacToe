@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class TicTacToe {
     public static void main(String[] args) {
@@ -60,7 +61,38 @@ public class TicTacToe {
     }
 
     private static void makeUserMove(char[][] gameTable) {
-
+        while (true) {
+            System.out.println("Пожалуйста, введите число от 1 до 9 ");
+            String string = new Scanner(System.in).nextLine();
+            if (string.length() == 1) {
+                char ch = string.charAt(0);
+                if (ch >= '1' && ch <= '9') {
+                    char[][] exampleTable = {
+                            {'7', '8', '9'},
+                            {'4', '5', '6'},
+                            {'1', '2', '3'}
+                    };
+                    boolean flag = true;
+                    for (int i = 0; i < exampleTable.length; i++) {
+                        for (int j = 0; j < exampleTable[i].length; j++) {
+                            if (exampleTable[i][j] == ch) {
+                                if (gameTable[i][j] == ' ') {
+                                    gameTable[i][j] = 'X';
+                                    return;
+                                } else {
+                                    System.out.println("Нельзя сделать ход, потому что выбранная ячейка не пуста. Попробуйте снова!\n");
+                                    flag = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!flag) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private static void makeComputerMove(char[][] gameTable) {
